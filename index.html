@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Archana</title>
+<!-- Link to the Great Vibes font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        color: pink;
+        font-size: 3em;
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-style: italic;
+        position: relative;
+        z-index: 1;
+    }
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 2em;
+        animation: float 4s ease-in-out infinite;
+        z-index: 0;
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(-20px); opacity: 0.8; }
+    }
+</style>
+</head>
+<body>
+
+<h1>I Love You Archana</h1>
+
+<script>
+    // Function to create a heart element
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+
+        // Random position around the text
+        const angle = Math.random() * 2 * Math.PI; // Random angle in radians
+        const radius = 100 + Math.random() * 100; // Random distance from the center
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+
+        heart.style.left = `calc(50% + ${x}px)`;
+        heart.style.top = `calc(50% + ${y}px)`;
+
+        // Add to the body and animate
+        document.body.appendChild(heart);
+
+        // Remove heart after animation ends
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+    // Create hearts every 500 milliseconds
+    setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
